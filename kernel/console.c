@@ -76,14 +76,15 @@ static void scrup(void)
 			__asm__ __volatile("cld\n\t"
 				"rep\n\t"
 				"movsl\n\t"
-				"movl columns,%1\n\t"
+				"movl %[columns],%1\n\t"
 				"rep\n\t"
 				"stosw"
 				:"=&a" (d0), "=&c" (d1), "=&D" (d2), "=&S" (d3)
 				:"0" (0x0720),
 				 "1" ((lines-1)*columns>>1),
 				 "2" (SCREEN_START),
-				 "3" (origin)
+				 "3" (origin),
+				 [columns] "r" (columns)
 				:"memory");
 
 			scr_end -= origin-SCREEN_START;
@@ -102,18 +103,19 @@ static void scrup(void)
 		}
 		set_origin();
 	} else {
-		int d0,d1,d2,d3;
+		int d0,d1,d2,d3; // c'est bizare sa
 		__asm__ __volatile__("cld\n\t"
 			"rep\n\t"
 			"movsl\n\t"
-			"movl columns,%%ecx\n\t"
+			"movl %[columns],%%ecx\n\t"
 			"rep\n\t"
 			"stosw"
 			:"=&a" (d0), "=&c" (d1), "=&D" (d2), "=&S" (d3)
 			:"0" (0x0720),
 			"1" ((bottom-top-1)*columns>>1),
 			"2" (origin+(columns<<1)*top),
-			"3" (origin+(columns<<1)*(top+1))
+			"3" (origin+(columns<<1)*(top+1)),
+			[columns] "r" (columns)
 			:"memory");
 	}
 }
@@ -125,14 +127,15 @@ static void scrdown(void)
 		"rep\n\t"
 		"movsl\n\t"
 		"addl $2,%%edi\n\t"	/* %edi has been decremented by 4 */
-		"movl columns,%%ecx\n\t"
+		"movl %[columns],%%ecx\n\t"
 		"rep\n\t"
 		"stosw"
 		:"=&a" (d0), "=&c" (d1), "=&D" (d2), "=&S" (d3)
 		:"0" (0x0720),
 		"1" ((bottom-top-1)*columns>>1),
 		"2" (origin+(columns<<1)*bottom-4),
-		"3" (origin+(columns<<1)*(bottom-1)-4)
+		"3" (origin+(columns<<1)*(bottom-1)-4),
+		[columns] "r" (columns)
 		:"memory");
 }
 

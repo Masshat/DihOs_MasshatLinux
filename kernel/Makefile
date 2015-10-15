@@ -9,10 +9,10 @@
 AR	=ar
 AS	=as
 LD	=ld
-LDFLAGS	=-s -x
+LDFLAGS	= -g #-s -x
 CC	=gcc
 CFLAGS	=-Wall -O -fstrength-reduce -fomit-frame-pointer  \
-	-finline-functions -fno-stack-protector -nostdinc -I../include
+	-finline-functions -fno-stack-protector -nostdinc -fno-builtin -I../include
 CPP	=gcc -E -nostdinc -I../include
 
 .c.s:

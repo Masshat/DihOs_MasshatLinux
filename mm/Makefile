@@ -1,6 +1,6 @@
 CC	=gcc
 CFLAGS	=-O -Wall -fstrength-reduce  -fomit-frame-pointer \
-	-fno-stack-protector -finline-functions -nostdinc -I../include
+	-fno-stack-protector -finline-functions -nostdinc -fno-builtin -g -I../include
 AS	=as
 AR	=ar
 LD	=ld

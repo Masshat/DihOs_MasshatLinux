@@ -4,15 +4,15 @@
 # remove them from the CFLAGS defines.
 #
 
-AS86	=as86 -0 
-CC86	=cc86 -0
-LD86	=ld86 -0
+AS86	=as #86 -0 
+CC86	=cc #86 -0
+LD86	=ld #86 -0
 
 AS	=as
 LD	=ld
-LDFLAGS	=-s -x -M -Ttext 0 -e startup_32
+LDFLAGS	= -M -Ttext 0 -e startup_32
 CC	=gcc
-CFLAGS	=-Wall -O -fstrength-reduce -fomit-frame-pointer -fno-stack-protector 
+CFLAGS	=-Wall -O -fstrength-reduce -fomit-frame-pointer -fno-stack-protector -fno-builtin -g
 CPP	=gcc -E -nostdinc -Iinclude
 
 ARCHIVES=kernel/kernel.o mm/mm.o fs/fs.o
@@ -63,7 +63,7 @@ lib/lib.a:
 boot/boot:	boot/boot.s tools/system
 	(echo -n "SYSSIZE = (";stat -c%s tools/system \
 		| tr '\012' ' '; echo "+ 15 ) / 16") > tmp.s	
-	cat boot/boot.s >> tmp.s
+	#cat boot/boot.s >> tmp.s
 	$(AS86) -o boot/boot.o tmp.s
 	rm -f tmp.s
 	$(LD86) -s -o boot/boot boot/boot.o

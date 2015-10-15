@@ -102,7 +102,7 @@ int sys_fstat64(unsigned int fd, struct stat64 * statbuf)
 
 int sys_lstat64(char* filename, struct stat * statbuf)
 {
-	return sys_stat64(filename,statbuf);
+	return sys_stat64(filename, (struct stat64 *)statbuf);
 }
 
 int sys_oldstat()
