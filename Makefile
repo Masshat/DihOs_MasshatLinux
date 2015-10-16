@@ -4,9 +4,11 @@
 # remove them from the CFLAGS defines.
 #
 
-AS86	=as #86 -0 
+#AS86	=as #86 -0 
+AS86	=/users/enseig/bitam/Documents/build/my_build/bin/as86 -0 
 CC86	=cc #86 -0
-LD86	=ld #86 -0
+#LD86	=ld #86 -0
+LD86	=/users/enseig/bitam/Documents/build/my_build/bin/ld86 -0 
 
 AS	=as
 LD	=ld
@@ -63,7 +65,7 @@ lib/lib.a:
 boot/boot:	boot/boot.s tools/system
 	(echo -n "SYSSIZE = (";stat -c%s tools/system \
 		| tr '\012' ' '; echo "+ 15 ) / 16") > tmp.s	
-	#cat boot/boot.s >> tmp.s
+	cat boot/boot.s >> tmp.s
 	$(AS86) -o boot/boot.o tmp.s
 	rm -f tmp.s
 	$(LD86) -s -o boot/boot boot/boot.o

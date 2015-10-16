@@ -29,7 +29,7 @@ int main(int argc, char ** argv)
 	for (i=0;i<sizeof buf; i++) buf[i]=0;
 	if ((id=open(argv[1],O_RDONLY,0))<0)
 		die("Unable to open 'boot'");
-	/*
+	
 	if (read(id,buf,MINIX_HEADER) != MINIX_HEADER)
 		die("Unable to read header of 'boot'");
 	if (((long *) buf)[0]!=0x04100301)
@@ -44,7 +44,7 @@ int main(int argc, char ** argv)
 		die("Non-Minix header of 'boot'");
 	if (((long *) buf)[7] != 0)
 		die("Illegal symbol table in 'boot'");
-	*/
+	
 	i=read(id,buf,sizeof buf);
 	fprintf(stderr,"Boot sector %d bytes.\n",i);
 	if (i>510)
