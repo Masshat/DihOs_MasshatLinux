@@ -5,10 +5,10 @@
 #
 
 #AS86	=as #86 -0 
-AS86	=/users/enseig/bitam/Documents/build/my_build/bin/as86 -0 
+AS86	=/users/enseig/bitam/kernel/DihOs_MasshatLinux/utilities/build/bin/as86 -0 
 CC86	=cc #86 -0
 #LD86	=ld #86 -0
-LD86	=/users/enseig/bitam/Documents/build/my_build/bin/ld86 -0 
+LD86	=/users/enseig/bitam/kernel/DihOs_MasshatLinux/utilities/build/bin/ld86 -0 
 
 AS	=as
 LD	=ld
