@@ -7,11 +7,11 @@
 #
 
 AR	=ar
-AS	=as
-LD	=ld
-LDFLAGS	= -g #-s -x
+AS	=as --32
+LD	=ld 
+LDFLAGS	= -m32 -g #-s -x
 CC	=gcc
-CFLAGS	=-Wall -O -fstrength-reduce -fomit-frame-pointer  \
+CFLAGS	=-m32 -Wall -O -fstrength-reduce -fomit-frame-pointer  \
 	-finline-functions -fno-stack-protector -nostdinc -fno-builtin -I../include
 CPP	=gcc -E -nostdinc -I../include
 

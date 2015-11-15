@@ -5,16 +5,16 @@
 #
 
 #AS86	=as #86 -0 
-AS86	=/users/enseig/bitam/kernel/DihOs_MasshatLinux/utilities/build/bin/as86 -0 
+AS86	=/home/massine/Documents/DihOs_MasshatLinux/utilities/bin86-0.16.17/as/as86 -0 
 CC86	=cc #86 -0
 #LD86	=ld #86 -0
-LD86	=/users/enseig/bitam/kernel/DihOs_MasshatLinux/utilities/build/bin/ld86 -0 
+LD86	=/home/massine/documents/DihOs_MasshatLinux/utilities/bin86-0.16.17/ld/ld86 -0 
 
 AS	=as
-LD	=ld
-LDFLAGS	= -M -Ttext 0 -e startup_32
+LD	=ld -m elf_i386
+LDFLAGS	=-m32 -M -Ttext 0 -e startup_32
 CC	=gcc
-CFLAGS	=-Wall -O -fstrength-reduce -fomit-frame-pointer -fno-stack-protector -fno-builtin -g
+CFLAGS	=-m32 -Wall -O -fstrength-reduce -fomit-frame-pointer -fno-stack-protector -fno-builtin -g
 CPP	=gcc -E -nostdinc -Iinclude
 
 ARCHIVES=kernel/kernel.o mm/mm.o fs/fs.o
